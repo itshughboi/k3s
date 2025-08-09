@@ -15,7 +15,7 @@ spec:
             email: CLOUDFLARE_EMAIL # CHANGE ME <<
             apiTokenSecretRef:
               name: cloudflare-token-secret
-              key: CLOUDFLARE_API_KEY_HERE # CHANGE ME <<
+              key: cloudflare-token
         selector:
           dnsZones:
             - "hughboi.vip"
