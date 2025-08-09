@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Version of Kube-VIP to deploy
-KVVERSION=v1.0.0    #"v0.6.3" << initial version setup
+KVVERSION="v0.6.3" #v1.0.0 << latest
 
 # K3S Version
-k3sVersion="v1.33.3+k3s1"
+k3sVersion="v1.26.10+k3s2" #"v1.33.3+k3s1" << latest
 
 # Set the IP addresses of the master and work nodes
 master1=10.10.30.1
@@ -23,17 +23,17 @@ interface=eth0
 # Set the virtual IP address (VIP)
 vip=10.10.30.30
 
-# Array of master nodes minus master1
+# Array of master nodes
 masters=($master2 $master3)
 
 # Array of worker nodes
-workers=($worker1 $worker2 $worker3)
+workers=($worker1 $worker2)
 
 # Array of all
-all=($master1 $master2 $master3 $worker1 $worker2 $worker3)
+all=($master1 $master2 $master3 $worker1 $worker2)
 
-# Array of all minus master1
-allnomaster1=($master2 $master3 $worker1 $worker2 $worker3)
+# Array of all minus master
+allnomaster1=($master2 $master3 $worker1 $worker2)
 
 #Loadbalancer IP range
 lbrange=10.10.30.70-10.10.30.99
