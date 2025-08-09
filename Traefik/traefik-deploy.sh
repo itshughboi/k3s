@@ -1,11 +1,7 @@
 #!/bin/bash
 
 # ENSURE THAT YOU COPY AND AMEND YOUR YAML FILES FIRST!!!
-# THE SCRIPT EXPECTS THE FILES TO BE IN ~/Helm/Traefik/ & ~/Manifest/Crowdsec
 # RUN THIS SCRIPT FROM THE HOME DIRECTORY
-
-# Script created from Official Documentation available at: https://cert-manager.io/docs/tutorials/acme/nginx-ingress/
-# and https://github.com/traefik/traefik-helm-chart
 
 # Step 0: Clone repository + extract Traefik directory
 DESTINATION=~/Helm/Traefik
@@ -13,10 +9,10 @@ if [ ! -d "`eval echo ${DESTINATION//>}`" ]; then
     sudo apt install unzip -y
     mkdir hughboi
     mkdir Helm
-    mkdir Manifest
-    curl -L -o master.zip https://github.com/JamesTurland/JimsGarage/archive/refs/heads/main.zip
-    unzip master.zip -d ~/jimsgarage
-    cp -r ~/jimsgarage/JimsGarage-main/Kubernetes/Traefik-PiHole/* ~/
+
+    curl -L -o master.zip https://github.com/itshughboi/k3s/archive/refs/heads/main.zip
+    unzip master.zip -d ~/hughboi
+    cp -r ~/hughboi/k3s-main/Traefik/* ~/
     rm master.zip
     rm -r ~/hughboi
     echo -e " \033[32;5mRepo cloned - EDIT FILES!!!\033[0m"
@@ -104,7 +100,7 @@ kubectl apply -f ~/Helm/Traefik/Cert-Manager/Issuers/secret-cf-token.yaml
 kubectl apply -f ~/Helm/Traefik/Cert-Manager/Issuers/letsencrypt-production.yaml
 
 # Step 13: Apply production certificate
-kubectl apply -f ~/Helm/Traefik/Cert-Manager/Certificates/Production/jimsgarage-production.yaml
+kubectl apply -f ~/Helm/Traefik/Cert-Manager/Certificates/Production/hughboi-production.yaml
 
 # # Step 14: Create PiHole namespace
 # kubectl create namespace pihole
