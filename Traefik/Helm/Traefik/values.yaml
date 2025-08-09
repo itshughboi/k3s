@@ -66,9 +66,9 @@ logs:
   access:
     enabled: true
 
-experimental:
-  plugins:
-    enabled: true
+# experimental: # << might need to re-enable this, but I was not able to deploy Traefik with this as is. Gave me a config error
+#   plugins:
+#     enabled: true
 
 volumes:
   - name: crowdsec-bouncer-tls
