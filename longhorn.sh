@@ -28,7 +28,7 @@ storage=($longhorn1 $longhorn2 $longhorn3)
 certName=ansible
 
 # K3s version to use
-k3s_version="v1.26.10+k3s2"
+k3s_version="v1.26.10+k3s2" #set this to the same version as in my k3s-deploy.sh
 
 #############################################
 #            DO NOT EDIT BELOW              #
