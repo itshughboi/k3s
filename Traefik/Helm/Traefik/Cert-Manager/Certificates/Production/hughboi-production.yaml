@@ -5,7 +5,7 @@ metadata:
   name: hughboi
   namespace: traefik # add to traefik namespace so it can use it (you DO NOT need it in each app namespace!!!)
 spec:
-  secretName: hughboi-tls #
+  secretName: hughboi-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
