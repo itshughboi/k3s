@@ -4,7 +4,7 @@
 KVVERSION=v1.0.0    #"v0.6.3" << initial version setup
 
 # K3S Version
-k3sVersion="v1.33.3+k3s1"
+k3sVersion="v1.33.3+k3s1"    #"v1.26.10+k3s2" << initial version setup
 
 # Set the IP addresses of the master and work nodes
 master1=10.10.30.1
