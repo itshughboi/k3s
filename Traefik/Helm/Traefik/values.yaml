@@ -1,0 +1,57 @@
+globalArguments:
+  - "--global.sendanonymoususage=false"
+  - "--global.checknewversion=false"
+
+additionalArguments:
+  - "--serversTransport.insecureSkipVerify=true"
+  - "--log.level=INFO"
+
+deployment:
+  enabled: true
+  replicas: 3 # match with number of workers
+  annotations: {}
+  podAnnotations: {}
+  additionalContainers: []
+  initContainers: []
+
+nodeSelector: 
+  worker: "true" # add these labels to your worker nodes in Rancher if it didn't get applied already. This says only put Traefik on worker nodes
+
+ports:
+  web:
+    redirections:      # << This syntax here has changed since the last Traefik version. I will get a syntax error if I use redirectTo instead.
+      entryPoint:: 
+        to: websecure
+        scheme: https
+        permanent: true
+  websecure:
+    tls:
+      enabled: true
+      
+ingressRoute:
+  dashboard:
+    enabled: false
+
+providers:
+  kubernetesCRD:
+    enabled: true
+    ingressClass: traefik-external
+    allowExternalNameServices: true
+  kubernetesIngress:
+    enabled: true
+    allowExternalNameServices: true
+    publishedService:
+      enabled: false
+
+rbac:
+  enabled: true
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations: {}
+  labels: {}
+  spec:
+    loadBalancerIP: 10.10.30.75 # this should be an IP in the Kube-VIP range e.g. 10.10.30-70-10.10.30.99
+  loadBalancerSourceRanges: []
+  externalIPs: []
