@@ -27,13 +27,13 @@ vip=10.10.30.30
 masters=($master2 $master3)
 
 # Array of worker nodes
-workers=($worker1 $worker2)
+workers=($worker1 $worker2 $worker3)
 
 # Array of all
-all=($master1 $master2 $master3 $worker1 $worker2)
+all=($master1 $master2 $master3 $worker1 $worker2 $worker3)
 
 # Array of all minus master
-allnomaster1=($master2 $master3 $worker1 $worker2)
+allnomaster1=($master2 $master3 $worker1 $worker2 $worker3)
 
 #Loadbalancer IP range
 lbrange=10.10.30.70-10.10.30.99
